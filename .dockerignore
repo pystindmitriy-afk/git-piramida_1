@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+.chrome-qa
+.chrome-qa-mobile
+.chrome-cdp-qa
+qa-screenshots
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*
