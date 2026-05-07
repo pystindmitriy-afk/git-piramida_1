@@ -1,13 +1,20 @@
-FROM node:22-slim  
-  
-WORKDIR /app  
-  
-COPY package*.json ./  
-  
-RUN npm install  
-  
-COPY . .  
-  
-RUN npm run build  
-  
-CMD ["npx", "serve", "-s", "build"]  
+# Используем готовую ноду (тут уже есть npm)
+FROM node:22-slim
+
+# Создаем папку для проекта
+WORKDIR /app
+
+# Копируем только файлы со списком библиотек
+COPY package*.json ./
+
+# Устанавливаем библиотеки (теперь это отдельная команда!)
+RUN npm install
+
+# Копируем всё остальное (код, картинки, 3D модели)
+COPY . .
+
+# Собираем проект
+RUN npm run build
+
+# Запускаем сайт
+CMD ["npx", "serve", "-s", "dist"]
